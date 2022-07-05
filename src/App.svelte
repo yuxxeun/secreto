@@ -1,29 +1,68 @@
 <script>
-  import logo from './assets/svelte.png'
-  import Counter from './lib/Counter.svelte'
+  import supabase from "./lib/db";
+  import logo from "/static/assets/svelte.png";
+
+  // fetch the data
+  async function getData() {
+    const { data, error } = await supabase.from("comments").select("*");
+    if (error) throw new Error(error.message);
+    return data;
+  }
+
+  // insert data
+  let newComment;
+  let submit = false;
+
+  async function sendData() {
+    const { data, error } = await supabase
+      .from("comments")
+      .insert([{ txt: newComment }]);
+    if (error) throw new Error(error.message);
+    return data;
+  }
 </script>
 
 <main>
   <img src={logo} alt="Svelte Logo" />
-  <h1>Hello world!</h1>
+  <h1>secreto.now.sh</h1>
+  <p>Send message with anonymously to @yuxxeun.</p>
 
-  <Counter />
+  <!-- show comment -->
+  <div>
+    <h1>Comment</h1>
+    {#await getData()}
+      <p>trying to fetching comment from supabase...</p>
+    {:then data}
+      {#each data as comment}
+        <li>{comment.txt}</li>
+      {/each}
+    {:catch error}
+      <p>something went wrong while fetching the data :</p>
+      <pre>{error}</pre>
+    {/await}
+  </div>
 
-  <p>
-    Visit <a href="https://svelte.dev">svelte.dev</a> to learn how to build Svelte
-    apps.
-  </p>
-
-  <p>
-    Check out <a href="https://github.com/sveltejs/kit#readme">SvelteKit</a> for
-    the officially supported framework, also powered by Vite!
-  </p>
+  <!-- insert comment -->
+  <form on:submit|preventDefault={() => (submit = true)}>
+    <input type="text" bind:value={newComment} />
+    <input type="submit" value="Submit" on:click={() => (submit = false)} />
+  </form>
+  {#if submit}
+    {#await sendData()}
+      <p>sending Comment...</p>
+    {:then data}
+      <p>successfuly send comment</p>
+    {:catch error}
+      <p>something went wrong while sending the comment :</p>
+      <pre>{error}</pre>
+    {/await}
+  {/if}
 </main>
 
 <style>
   :root {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   }
 
   main {
