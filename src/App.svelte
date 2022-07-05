@@ -51,7 +51,7 @@
     {#await sendData()}
       <p>sending Comment...</p>
     {:then data}
-      <p>successfuly send comment</p>
+      <p>successfuly send comment, please refresh this page</p>
     {:catch error}
       <p>something went wrong while sending the comment :</p>
       <pre>{error}</pre>
