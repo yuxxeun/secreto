@@ -17,7 +17,7 @@ import moment from 'moment';
   async function sendData() {
     const { data, error } = await supabase
       .from("comments")
-      .insert([{ txt: newComment }]);
+      .insert([{ 'txt': newComment }]);
     if (error) throw new Error(error.message);
     return data;
   }
@@ -33,6 +33,9 @@ import moment from 'moment';
       <textarea
         type="text"
         placeholder="Type random message..."
+	required
+	minlength="5"
+	bind:value={newComment}
         class="border-2 p-2 w-4/5 items-center font-inter text-lg rounded-md border-cyan-500"
       />
       <button
@@ -44,15 +47,15 @@ import moment from 'moment';
     </form>
     {#if submit}
       {#await sendData()}
-        <p class="text-xl text-yellow-400 italic font-space">
+        <p class="text-xl text-center text-yellow-400 italic font-space">
           Sending message...
         </p>
       {:then data}
-        <p class="text-xl italic text-green-400 font-space">
+        <p class="text-xl text-center italic text-green-400 font-space">
           Successfuly send message, please refresh this page
         </p>
       {:catch error}
-        <p class="text-xl italic text-red-500 font-space">
+        <p class="text-xl text-center italic text-red-500 font-space">
           Something went wrong while sending the message :
         </p>
         <pre>{error}</pre>
@@ -67,7 +70,7 @@ import moment from 'moment';
         Message's
       </h1>
       {#await getData()}
-        <div class="text-xl text-yellow-400 italic font-space">
+        <div class="text-xl text-center text-yellow-400 italic font-space">
           <p>Trying to fetch all messages from our lovely database...</p>
         </div>
       {:then data}
@@ -86,7 +89,7 @@ import moment from 'moment';
           </div>
         {/each}
       {:catch error}
-        <div class="text-xl italic text-red-500 text-center font-space">
+        <div class="text-xl text-center italic text-red-500 text-center font-space">
           <p>Something went wrong while fetching the messages :</p>
           <pre>{error}</pre>
         </div>
