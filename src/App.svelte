@@ -61,7 +61,7 @@
     <!-- show message -->
     <div>
       <h1
-        class="font-basement text-3xl my-10 text-center mx-auto md:w-1/5 text-white tracking-wide bg-yellow-400 rounded-md px-5 py-3"
+        class="font-basement text-3xl my-10 text-center mx-auto md:w-2/6 text-white tracking-wide bg-yellow-400 rounded-md px-5 py-3"
       >
         Message's
       </h1>
