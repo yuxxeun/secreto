@@ -1,6 +1,7 @@
 <script>
   import Layout from "./___layout.svelte";
   import supabase from "./lib/db";
+import moment from 'moment';
 
   // fetch the data
   async function getData() {
@@ -32,7 +33,7 @@
       <textarea
         type="text"
         placeholder="Type random message..."
-        class="border-2 p-2 w-4/5 items-center inter text-lg rounded-md border-cyan-500"
+        class="border-2 p-2 w-4/5 items-center font-inter text-lg rounded-md border-cyan-500"
       />
       <button
         value="Submit"
@@ -77,9 +78,9 @@
             <div
               class="rounded-lg pb-2 text-pink-500 italic font-space font-bold"
             >
-              {comment.created_at}
+              {moment(comment.created_at).format('MMMM Do YYYY, h:mm:ss a')}
             </div>
-            <p class="text-black text-xl inter">
+            <p class="text-black text-xl font-inter">
               {comment.txt}
             </p>
           </div>

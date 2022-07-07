@@ -4,7 +4,7 @@ module.exports = {
     fontFamily: {
       basement: "BasementGrotesque-Black, cursive",
       space: "SpaceMono-Regular, cursive",
-space: "Inter-Regular, cursive",
+inter: "Inter-Regular, cursive",
     },
     extend: {},
   },
