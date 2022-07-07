@@ -1,6 +1,6 @@
 <script>
+  import Layout from "./___layout.svelte";
   import supabase from "./lib/db";
-  import logo from "/static/assets/svelte.png";
 
   // fetch the data
   async function getData() {
@@ -23,82 +23,73 @@
 </script>
 
 <main>
-  <img src={logo} alt="Svelte Logo" />
-  <h1>secreto.now.sh</h1>
-  <p>Send message with anonymously to @yuxxeun.</p>
+  <Layout>
+    <!-- message form -->
+    <form
+      on:submit|preventDefault={() => (submit = true)}
+      class="mx-auto d-flex flex w-5/6 text-black my-5 justify-center items-center"
+    >
+      <textarea
+        type="text"
+        placeholder="Type random message..."
+        class="border-2 p-2 w-4/5 items-center inter text-lg rounded-md border-cyan-500"
+      />
+      <button
+        value="Submit"
+        on:click={() => (submit = false)}
+        class="mx-5 rounded-md bg-cyan-500 hover:bg-white hover:border-2 hover:border-cyan-500 hover:text-cyan-500 font-basement text-white px-8 py-5"
+        >Send &rarr;</button
+      >
+    </form>
+    {#if submit}
+      {#await sendData()}
+        <p class="text-xl text-yellow-400 italic font-space">
+          Sending message...
+        </p>
+      {:then data}
+        <p class="text-xl italic text-green-400 font-space">
+          Successfuly send message, please refresh this page
+        </p>
+      {:catch error}
+        <p class="text-xl italic text-red-500 font-space">
+          Something went wrong while sending the message :
+        </p>
+        <pre>{error}</pre>
+      {/await}
+    {/if}
 
-  <!-- show comment -->
-  <div>
-    <h1>Comment</h1>
-    {#await getData()}
-      <p>trying to fetching comment from supabase...</p>
-    {:then data}
-      {#each data as comment}
-        <li>{comment.txt}</li>
-      {/each}
-    {:catch error}
-      <p>something went wrong while fetching the data :</p>
-      <pre>{error}</pre>
-    {/await}
-  </div>
-
-  <!-- insert comment -->
-  <form on:submit|preventDefault={() => (submit = true)}>
-    <input type="text" bind:value={newComment} />
-    <input type="submit" value="Submit" on:click={() => (submit = false)} />
-  </form>
-  {#if submit}
-    {#await sendData()}
-      <p>sending Comment...</p>
-    {:then data}
-      <p>successfuly send comment, please refresh this page</p>
-    {:catch error}
-      <p>something went wrong while sending the comment :</p>
-      <pre>{error}</pre>
-    {/await}
-  {/if}
+    <!-- show message -->
+    <div>
+      <h1
+        class="font-basement text-3xl my-10 text-center mx-auto md:w-1/5 text-white tracking-wide bg-yellow-400 rounded-md px-5 py-3"
+      >
+        Message's
+      </h1>
+      {#await getData()}
+        <div class="text-xl text-yellow-400 italic font-space">
+          <p>Trying to fetch all messages from our lovely database...</p>
+        </div>
+      {:then data}
+        {#each data as comment}
+          <div
+            class="rounded-md my-2 bg-white/70 text-center w-3/4 mx-auto px-5 py-5 backdrop-blur-md"
+          >
+            <div
+              class="rounded-lg pb-2 text-pink-500 italic font-space font-bold"
+            >
+              {comment.created_at}
+            </div>
+            <p class="text-black text-xl inter">
+              {comment.txt}
+            </p>
+          </div>
+        {/each}
+      {:catch error}
+        <div class="text-xl italic text-red-500 text-center font-space">
+          <p>Something went wrong while fetching the messages :</p>
+          <pre>{error}</pre>
+        </div>
+      {/await}
+    </div>
+  </Layout>
 </main>
-
-<style>
-  :root {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  }
-
-  main {
-    text-align: center;
-    padding: 1em;
-    margin: 0 auto;
-  }
-
-  img {
-    height: 16rem;
-    width: 16rem;
-  }
-
-  h1 {
-    color: #ff3e00;
-    text-transform: uppercase;
-    font-size: 4rem;
-    font-weight: 100;
-    line-height: 1.1;
-    margin: 2rem auto;
-    max-width: 14rem;
-  }
-
-  p {
-    max-width: 14rem;
-    margin: 1rem auto;
-    line-height: 1.35;
-  }
-
-  @media (min-width: 480px) {
-    h1 {
-      max-width: none;
-    }
-
-    p {
-      max-width: none;
-    }
-  }
-</style>
