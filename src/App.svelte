@@ -5,7 +5,7 @@ import moment from 'moment';
 
   // fetch the data
   async function getData() {
-    const { data, error } = await supabase.from("comments").select("*");
+    const { data, error } = await supabase.from("comments").select("*").order('id', { ascending: false });
     if (error) throw new Error(error.message);
     return data;
   }
