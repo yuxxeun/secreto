@@ -68,7 +68,7 @@
     <!-- show message -->
     <div>
       <h1
-        class="font-basement text-xl my-8 text-center mx-auto md:w-1/2 text-white tracking-wide bg-pink-400 rounded-md py-2"
+        class="font-basement text-xl my-8 text-center mx-auto w-3/5 text-white tracking-wide bg-pink-400 rounded-md py-2"
       >
         Message's
       </h1>
@@ -79,7 +79,7 @@
       {:then data}
         {#each data as comment}
           <div
-            class="rounded-md my-2 bg-white/70 text-center w-3/5 mx-auto px-5 py-5 backdrop-blur-md"
+            class="rounded-md my-2 bg-white/70 text-center w-5/6 mx-auto px-5 py-5 backdrop-blur-md"
           >
             <div
               class="rounded-md pb-2 __orange italic text-md font-space font-bold"
