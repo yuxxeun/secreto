@@ -1,9 +1,9 @@
 <section>
-  <div class="bg-red-500 rounded-md text-center w-4/5 mx-auto px-2 my-5 py-2">
+  <div class="bg-red-500 rounded-md text-center md:w-5/6 mx-auto px-2 py-2">
     <div>
-      <p class="tracking-wide inter font-bold italic text-white">
-        This website doesn't use cookies or contain any third-party resources
-        and respects your Do-Not-Track (DNT) preferences.
+      <p class="tracking-wide inter font-semibold italic text-md text-white">
+        Secreto doesn't use cookies or contain any 3rd-party resources and
+        respects your Do-Not-Track (DNT) preferences.
       </p>
     </div>
   </div>

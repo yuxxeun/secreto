@@ -1,7 +1,12 @@
 <footer
-  class="font-basement tracking-wide mb-5 mt-10 text-pink-500 text-center"
+  class="font-basement text-sm tracking-wide mb-5 mt-10 text-white text-center"
 >
   <div>
-    <p>✨ WTFPL License © 2022 — present by @yuxxeun 🔮</p>
+    <p>
+      ✨ MIT License &bull; Svelte &bull; <a
+        href="github.com/yuxxeun"
+        class="underline">@yuxxeun</a
+      > 🔮
+    </p>
   </div>
 </footer>

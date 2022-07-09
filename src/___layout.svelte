@@ -5,7 +5,7 @@
   import Alert from "./components/alert.svelte";
 </script>
 
-<div class="w-5/6 mx-auto items-center py-5">
+<div class="px-10 mx-auto my-5 items-center py-5">
   <Header />
   <Alert />
   <slot />
