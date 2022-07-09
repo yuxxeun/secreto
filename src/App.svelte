@@ -3,6 +3,12 @@
   import supabase from "./lib/db";
   import moment from "moment";
 
+		const onInput = (event) => {
+			if (event.key !== 'Enter') return;
+			console.log(newFieldValue);
+			inputField.value = '';
+		};
+
   // fetch the data
   async function getData() {
     const { data, error } = await supabase
@@ -14,7 +20,8 @@
   }
 
   // insert data
-  let newComment;
+  let newComment = '';
+let inputField;
   let submit = false;
 
   async function sendData() {
@@ -33,7 +40,9 @@
       on:submit|preventDefault={() => (submit = true)}
       class="text-black text-center my-5"
     >
-      <textarea
+      <input
+	bind:this={inputField}
+	on:keydown={onInput}
         type="text"
         placeholder="give me a joke"
         required
