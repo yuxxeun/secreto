@@ -25,7 +25,7 @@
 @tailwind utilities;
 
 body {
-  background-image: url("/static/Hexagon.svg") !important;
+  background-image: url("/static/gradient.svg") !important;
   color: #fff;
   background-repeat: no-repeat;
   background-size: cover;

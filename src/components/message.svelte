@@ -131,7 +131,7 @@
     {:then data}
       {#each data as comment}
         <div
-          class="mockup-code card w-96 my-2 mx-auto bg-base-100/90 shadow-xl"
+          class="mockup-code card w-96 my-2 mx-auto bg-base-100/30 shadow-xl"
         >
           <div class="card-body items-center text-center">
             <div class="badge badge-secondary font-space">
