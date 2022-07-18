@@ -25,13 +25,10 @@
 @tailwind utilities;
 
 body {
-  background: #090c1b;
+  background-image: url("/static/Hexagon.svg") !important;
   color: #fff;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-}
-
-.__orange {
-  color: #ff5722;
+  background-attachment: fixed;
 }
