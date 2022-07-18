@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^1.35.4",
-    "daisyui": "^2.18.0",
+    "daisyui": "^2.19.0",
     "moment": "^2.29.4"
   }
 }

@@ -1,10 +1,14 @@
-<footer>
-  <div>
-    <p class="text-sm d-flex font-basement tracking-wide mb-5 mt-10 text-white text-center">
-      ✨ MIT &bull; SvelteKit &bull; <a
-        href="https://github.com/yuxxeun"
-        class="underline">@yuxxeun</a
-      > 🔮
-    </p>
-  </div>
-</footer>
+<section>
+  <footer
+    class="footer tracking-wide text-sm footer-center font-basement p-4 text-base-content"
+  >
+    <div>
+      <p>
+        ✨ #CoolKidsUseSvelteKit &bull; <a
+          href="https://github.com/yuxxeun"
+          class="text-secondary">@yuxxeun</a
+        > 🔮
+      </p>
+    </div>
+  </footer>
+</section>
