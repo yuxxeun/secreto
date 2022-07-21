@@ -24,11 +24,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  background-color: black !important;
+}
+
 body {
-  background-image: url("/static/gradient.svg") !important;
   color: #fff;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
 }

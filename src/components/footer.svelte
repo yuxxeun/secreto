@@ -1,6 +1,6 @@
 <section>
   <footer
-    class="footer tracking-wide text-sm footer-center font-basement p-4 text-base-content"
+    class="footer tracking-wide text-xs footer-center font-basement p-4 text-base-content"
   >
     <div>
       <p>

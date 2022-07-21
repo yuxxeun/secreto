@@ -34,7 +34,7 @@
 <section>
   <form
     on:submit|preventDefault={() => (submit = true)}
-    class="text-black text-center my-5"
+    class="text-white text-center my-5"
   >
     <input
       bind:this={inputField}
@@ -95,7 +95,7 @@
           >
         </div>
       </div>
-    {:catch error}
+    {:catch}
       <div
         class="alert mx-auto md:w-5/6 my-5 items-center text-center font-semibold font-space alert-danger shadow-lg"
       >
@@ -109,10 +109,10 @@
               stroke-linecap="round"
               stroke-linejoin="round"
               stroke-width="2"
-              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+              d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
             /></svg
           >
-          <span>{error}</span>
+          <span>Upsss! u can sending messages for now!</span>
         </div>
       </div>
     {/await}
@@ -130,9 +130,7 @@
       </div>
     {:then data}
       {#each data as comment}
-        <div
-          class="mockup-code card w-96 my-2 mx-auto bg-base-100/30 shadow-xl"
-        >
+        <div class="mockup-code card w-96 my-2 mx-auto bg-base-100 shadow-xl">
           <div class="card-body items-center text-center">
             <div class="badge badge-secondary font-space">
               {moment(comment.created_at).format("Do MMMM, YYYY")}
@@ -141,9 +139,9 @@
           </div>
         </div>
       {/each}
-    {:catch error}
+    {:catch}
       <div
-        class="alert mx-auto md:w-5/6 my-5 items-center text-center font-semibold font-space alert-success shadow-lg"
+        class="alert mx-auto md:w-5/6 my-5 items-center text-center font-semibold font-space alert-danger shadow-lg"
       >
         <div>
           <svg
@@ -158,8 +156,7 @@
               d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
             /></svg
           >
-          >
-          <span>{error}</span>
+          <span class="italic">Upsss! something happen with my sever</span>
         </div>
       </div>
     {/await}

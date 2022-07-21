@@ -1,10 +1,9 @@
 <section>
   <div
-    class="mockup-code bg-base-100/70 my-5 font-semibold text-center mx-auto md:w-5/6"
+    class="mockup-code text-sm lg:text-lg bg-base-100 my-5 italic text-center mx-auto md:w-5/6"
   >
-    <pre data-prefix="⚠" class="text-warning"><code
-        >Secreto doesn't use cookies or contain any 3rd-party resources and
-      respects your Do-Not-Track (DNT) preferences.</code
+    <pre data-prefix="" class="text-secondary"><code
+        >Secreto respects your Do-Not-Track (DNT) preferences.</code
       ></pre>
   </div>
 </section>
